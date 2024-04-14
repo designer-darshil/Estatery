@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import LogoImage from '../../assets/images/Logo.svg';
+import { NavLink } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null);
@@ -39,7 +40,17 @@ const Navbar: React.FC = () => {
             <div className="flex max-md:block items-center gap-3">
               <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:text-start">
               <li>
-                <a href="/rent" className="block py-2 px-3 bg-blue-700 rounded max-md:text-start md:bg-transparent md:text-blue-700 md:p-0" aria-current="page">Rent</a>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "golden-gradient-text text-xl border-b-2 border-b-[#A17433] block"
+                    : "p-2 block text-xl text-[#F1E484] duration-200 hover:opacity-50"
+                }
+                to="/rent"
+              >
+                Rent
+              </NavLink>
+                {/* <a href="/rent" className="block py-2 px-3 bg-blue-700 rounded max-md:text-start md:bg-transparent md:text-blue-700 md:p-0" aria-current="page">Rent</a> */}
               </li>
               <li>
                 <a href="/buy" className="block py-2 px-3 text-gray-900 rounded max-md:text-start hover:bg-gray-100 md:hover:text-blue-700 md:p-0">Buy</a>
