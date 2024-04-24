@@ -6,7 +6,6 @@ const Navbar: React.FC = () => {
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null);
   const [activeNavbar, setActiveNavbar] = useState(false);
 
-  // Sample data for demonstration
   const menuItems = [
     { label: 'Manage Property', items: ['Manage Property 1', 'Manage Property 2', 'Manage Property 3', 'Manage Property 4', 'Manage Property 5'] },
     { label: 'Resources', items: ['Resources 1', 'Resources 2', 'Resources 3', 'Resources 4'] }
@@ -20,9 +19,9 @@ const Navbar: React.FC = () => {
     <>
       <nav className="bg-white/40 backdrop-blur-xl fixed w-full z-10">
         <div className="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+          <NavLink to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
             <img src={LogoImage} alt="" />
-          </a>
+          </NavLink>
           <button
             data-collapse-toggle="navbar-default"
             type="button"
@@ -39,53 +38,53 @@ const Navbar: React.FC = () => {
           <div className={`w-full md:block md:w-auto ${activeNavbar ? "block h-screen" : "hidden"}`} id="navbar-default">
             <div className="flex max-md:block items-center gap-3">
               <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:text-start">
-              <li>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive
-                    ? "golden-gradient-text text-xl border-b-2 border-b-[#A17433] block"
-                    : "p-2 block text-xl text-[#F1E484] duration-200 hover:opacity-50"
-                }
-                to="/rent"
-              >
-                Rent
-              </NavLink>
-                {/* <a href="/rent" className="block py-2 px-3 bg-blue-700 rounded max-md:text-start md:bg-transparent md:text-blue-700 md:p-0" aria-current="page">Rent</a> */}
-              </li>
-              <li>
-                <a href="/buy" className="block py-2 px-3 text-gray-900 rounded max-md:text-start hover:bg-gray-100 md:hover:text-blue-700 md:p-0">Buy</a>
-              </li>
-              <li>
-                <a href="/sell" className="block py-2 px-3 text-gray-900 rounded max-md:text-start hover:bg-gray-100 md:hover:text-blue-700 md:p-0">Sell</a>
-              </li>
-              {menuItems.map((menuItem, index) => (
-                <li key={index} className='relative'>
-                  <div className='flex items-center gap-2'>
-                  <a
-                    role='button'
-                    onClick={() => toggleDropdown(index)}
-                    className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:text-blue-700 md:p-0"
+                <li>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "golden-gradient-text text-xl border-b-2 border-b-[#A17433] block"
+                        : "p-2 block text-xl text-[#F1E484] duration-200 hover:opacity-50"
+                    }
+                    to="/rent"
                   >
-                    {menuItem.label}
-                  </a>
-                  <i className={`ri-arrow-down-s-line ${activeDropdown === index ? "rotate-180" : ""}`}></i>
-                  </div>
-                  <ul className={`absolute max-md:left-0 right-0 top-14 w-56 z-10 shadow-lg bg-white rounded-xl text-start ${activeDropdown === index ? "block" : "hidden"}`}>
-                    {menuItem.items.map((item, idx) => (
-                      <li key={idx} className='border-b border-b-gray border-opacity-10'>
-                        <a className='block w-full h-full p-3' href="#">{item}</a>
-                      </li>
-                    ))}
-                  </ul>
+                    Rent
+                  </NavLink>
                 </li>
-              ))}
-            </ul>
-            <div className='flex items-center gap-3'>
+                <li>
+                  <NavLink to="/buy" className="block py-2 px-3 text-gray-900 rounded max-md:text-start hover:bg-gray-100 md:hover:text-blue-700 md:p-0">Buy</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/sell" className="block py-2 px-3 text-gray-900 rounded max-md:text-start hover:bg-gray-100 md:hover:text-blue-700 md:p-0">Sell</NavLink>
+                </li>
+                {menuItems.map((menuItem, index) => (
+                  <li key={index} className='relative'>
+                    <div className='flex items-center gap-2'>
+                      <NavLink
+                        role='button'
+                        onClick={() => toggleDropdown(index)}
+                        className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:text-blue-700 md:p-0"
+                        to="#"
+                      >
+                        {menuItem.label}
+                      </NavLink>
+                      <i className={`ri-arrow-down-s-line ${activeDropdown === index ? "rotate-180" : ""}`}></i>
+                    </div>
+                    <ul className={`absolute max-md:left-0 right-0 top-14 w-56 z-10 shadow-lg bg-white rounded-xl text-start ${activeDropdown === index ? "block" : "hidden"}`}>
+                      {menuItem.items.map((item, idx) => (
+                        <li key={idx} className='border-b border-b-gray border-opacity-10'>
+                          <a className='block w-full h-full p-3' href="#">{item}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                ))}
+              </ul>
+              <div className='flex items-center gap-3'>
                 <button className='py-2 px-4 max-md:p-4 text-sm rounded-lg border-2 border-[#E0DEF7] transition duration-150 ease-in-out hover:text-white hover:bg-primary hover:border-primary max-md:w-full'>Login</button>
                 <button className='py-2 px-4 max-md:p-4 text-sm rounded-lg bg-primary text-white max-md:w-full'>Sign up</button>
+              </div>
             </div>
-            </div>
-            
+
           </div>
         </div>
       </nav>
