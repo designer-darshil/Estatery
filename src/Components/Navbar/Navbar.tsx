@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import LogoImage from '../../assets/images/Logo.svg';
+import LogoImage from '@/assets/images/Logo.svg';
 import { NavLink } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
@@ -42,8 +42,8 @@ const Navbar: React.FC = () => {
                   <NavLink
                     className={({ isActive }) =>
                       isActive
-                        ? "golden-gradient-text text-xl border-b-2 border-b-[#A17433] block"
-                        : "p-2 block text-xl text-[#F1E484] duration-200 hover:opacity-50"
+                        ? "text-primary font-semibold block"
+                        : "block py-2 px-3 text-gray-900 rounded max-md:text-start hover:bg-gray-100 md:hover:text-blue-700 md:p-0"
                     }
                     to="/rent"
                   >
@@ -51,10 +51,28 @@ const Navbar: React.FC = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/buy" className="block py-2 px-3 text-gray-900 rounded max-md:text-start hover:bg-gray-100 md:hover:text-blue-700 md:p-0">Buy</NavLink>
+                <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "text-primary font-semibold block"
+                        : "block py-2 px-3 text-gray-900 rounded max-md:text-start hover:bg-gray-100 md:hover:text-blue-700 md:p-0"
+                    }
+                    to="/buy"
+                  >
+                    Buy
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/sell" className="block py-2 px-3 text-gray-900 rounded max-md:text-start hover:bg-gray-100 md:hover:text-blue-700 md:p-0">Sell</NavLink>
+                <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "text-primary font-semibold block"
+                        : "block py-2 px-3 text-gray-900 rounded max-md:text-start hover:bg-gray-100 md:hover:text-blue-700 md:p-0"
+                    }
+                    to="/sell"
+                  >
+                    Sell
+                  </NavLink>
                 </li>
                 {menuItems.map((menuItem, index) => (
                   <li key={index} className='relative'>
