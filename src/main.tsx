@@ -1,12 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
-import 'remixicon/fonts/remixicon.css'
-import { BrowserRouter } from 'react-router-dom'
+import ReactDOM from "react-dom";
+import App from "./App.tsx";
+import "./index.css";
+import "remixicon/fonts/remixicon.css";
+import { BrowserRouter } from "react-router-dom";
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.render(
   <BrowserRouter>
     <App />
-  </BrowserRouter>
+  </BrowserRouter>,
+  document.getElementById("root")
 );

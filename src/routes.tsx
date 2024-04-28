@@ -1,11 +1,14 @@
-import * as React from 'react'
-import Rent from './Pages/Rent/Rent'
+import * as React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom"; // Import BrowserRouter and Route
+import Rent from "./Pages/Rent/Rent";
 
-const Routes: React.SFC = () => (
-    
-<Routes>
-<Routes path="/rent" element={<Rent />} />
-</Routes>
-)
+const Routes: React.FC = () => (
+  <Router>
+    {" "}
+    {/* Wrap routes in Router */}
+    <Route path="/rent" element={<Rent />} />{" "}
+    {/* Define individual routes using Route */}
+  </Router>
+);
 
-export default Routes
+export default Routes;

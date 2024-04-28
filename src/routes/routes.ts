@@ -1,3 +1,4 @@
 export const routes = {
-    default: '/'
-}
+    default: "/",
+    rent: "/rent"
+};

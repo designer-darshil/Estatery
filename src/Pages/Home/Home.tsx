@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TenantsLandlords from "../../assets/images/TenantsLandlords.png";
 import propertyImage1 from "../../assets/images/propertyImage1.png";
 import HeroBG from "../../assets/images/HeroBG.png";
@@ -9,33 +9,39 @@ import PropertyInsurance from "../../assets/Benefit/PropertyInsurance.png";
 import BestPrice from "../../assets/Benefit/BestPrice.png";
 import LowestCommission from "../../assets/Benefit/LowestCommission.png";
 import OverallControl from "../../assets/Benefit/OverallControl.png";
-
 import Swiper from "swiper";
 import "swiper/css";
 
 const Home: React.FC = () => {
-  const swiper = new Swiper(".mySwiper", {
-    centeredSlides: false,
-    loop: true,
-    autoplay: {
-      delay: 2500,
-      disableOnInteraction: false,
-    },
-    breakpoints: {
-      640: {
-        slidesPerView: 2,
-        spaceBetween: 20,
+  useEffect(() => {
+    const swiper = new Swiper(".mySwiper", {
+      centeredSlides: false,
+      loop: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
       },
-      768: {
-        slidesPerView: 4,
-        spaceBetween: 40,
+      breakpoints: {
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 4,
+          spaceBetween: 40,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 50,
+        },
       },
-      1024: {
-        slidesPerView: 3,
-        spaceBetween: 50,
-      },
-    },
-  });
+    });
+
+    return () => {
+      // Cleanup Swiper instance on component unmount
+      swiper.destroy();
+    };
+  }, []); // Empty dependency array to run once after component mount
 
   const [activeTab, setActiveTab] = useState(0);
 
@@ -170,227 +176,12 @@ const Home: React.FC = () => {
             </div>
           </div>
           <div className="col-span-2">
-            {tabs.map((tab, index) => (
+            {tabs.map((_, index) => (
               <div
                 key={index}
                 style={{ display: activeTab === index ? "block" : "none" }}
               >
                 <div className="grid grid-cols-3 max-md:grid-cols-1 gap-8">
-                  <div className="card overflow-hidden p-0 rounded-lg border-2 border-[#F0EFFB] bg-white ease-in-out delay-100 hover:-translate-y-1 hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.09)]">
-                    <div className="card-header">
-                      <img
-                        className="w-full object-cover h-64"
-                        src={propertyImage1}
-                        alt=""
-                      />
-                    </div>
-                    <div className="card-body p-5 text-start">
-                      <div className="flex items-start justify-between">
-                        <div>
-                          <h3 className="font-extrabold text-2xl text-primary mb-2">
-                            $2,095
-                            <span className="text-gray text-sm font-normal">
-                              /month
-                            </span>
-                          </h3>
-                          <h3 className="font-bold text-2xl mb-2">
-                            Palm Harbor
-                          </h3>
-                        </div>
-                        <div className="w-10 h-10 rounded-full flex items-center justify-center border border-[#E8E6F9]">
-                          <i className="ri-heart-3-line text-xl text-primary"></i>
-                        </div>
-                      </div>
-                      <p>2699 Green Valley, Highland Lake, FL</p>
-                      <div className="mt-4 p-3 pb-0 flex items-center justify-between gap-3 border-t border-t-[#F0EFFB]">
-                        <div className="flex items-center gap-3 text-md">
-                          <img src={Beds} alt="" />
-
-                          <span>3 Beds</span>
-                        </div>
-                        <div className="flex items-center gap-3 text-md">
-                          <img src={Bathrooms} alt="" />
-                          <span>2 Bathrooms</span>
-                        </div>
-                        <div className="flex items-center gap-3 text-md">
-                          <img src={Area} alt="" />
-                          <span>5x7 m²</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="card overflow-hidden p-0 rounded-lg border-2 border-[#F0EFFB] bg-white ease-in-out delay-100 hover:-translate-y-1 hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.09)]">
-                    <div className="card-header">
-                      <img
-                        className="w-full object-cover h-64"
-                        src={propertyImage1}
-                        alt=""
-                      />
-                    </div>
-                    <div className="card-body p-5 text-start">
-                      <div className="flex items-start justify-between">
-                        <div>
-                          <h3 className="font-extrabold text-2xl text-primary mb-2">
-                            $2,095
-                            <span className="text-gray text-sm font-normal">
-                              /month
-                            </span>
-                          </h3>
-                          <h3 className="font-bold text-2xl mb-2">
-                            Palm Harbor
-                          </h3>
-                        </div>
-                        <div className="w-10 h-10 rounded-full flex items-center justify-center border border-[#E8E6F9]">
-                          <i className="ri-heart-3-line text-xl text-primary"></i>
-                        </div>
-                      </div>
-                      <p>2699 Green Valley, Highland Lake, FL</p>
-                      <div className="mt-4 p-3 pb-0 flex items-center justify-between gap-3 border-t border-t-[#F0EFFB]">
-                        <div className="flex items-center gap-3 text-md">
-                          <img src={Beds} alt="" />
-
-                          <span>3 Beds</span>
-                        </div>
-                        <div className="flex items-center gap-3 text-md">
-                          <img src={Bathrooms} alt="" />
-                          <span>2 Bathrooms</span>
-                        </div>
-                        <div className="flex items-center gap-3 text-md">
-                          <img src={Area} alt="" />
-                          <span>5x7 m²</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="card overflow-hidden p-0 rounded-lg border-2 border-[#F0EFFB] bg-white ease-in-out delay-100 hover:-translate-y-1 hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.09)]">
-                    <div className="card-header">
-                      <img
-                        className="w-full object-cover h-64"
-                        src={propertyImage1}
-                        alt=""
-                      />
-                    </div>
-                    <div className="card-body p-5 text-start">
-                      <div className="flex items-start justify-between">
-                        <div>
-                          <h3 className="font-extrabold text-2xl text-primary mb-2">
-                            $2,095
-                            <span className="text-gray text-sm font-normal">
-                              /month
-                            </span>
-                          </h3>
-                          <h3 className="font-bold text-2xl mb-2">
-                            Palm Harbor
-                          </h3>
-                        </div>
-                        <div className="w-10 h-10 rounded-full flex items-center justify-center border border-[#E8E6F9]">
-                          <i className="ri-heart-3-line text-xl text-primary"></i>
-                        </div>
-                      </div>
-                      <p>2699 Green Valley, Highland Lake, FL</p>
-                      <div className="mt-4 p-3 pb-0 flex items-center justify-between gap-3 border-t border-t-[#F0EFFB]">
-                        <div className="flex items-center gap-3 text-md">
-                          <img src={Beds} alt="" />
-
-                          <span>3 Beds</span>
-                        </div>
-                        <div className="flex items-center gap-3 text-md">
-                          <img src={Bathrooms} alt="" />
-                          <span>2 Bathrooms</span>
-                        </div>
-                        <div className="flex items-center gap-3 text-md">
-                          <img src={Area} alt="" />
-                          <span>5x7 m²</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="card overflow-hidden p-0 rounded-lg border-2 border-[#F0EFFB] bg-white ease-in-out delay-100 hover:-translate-y-1 hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.09)]">
-                    <div className="card-header">
-                      <img
-                        className="w-full object-cover h-64"
-                        src={propertyImage1}
-                        alt=""
-                      />
-                    </div>
-                    <div className="card-body p-5 text-start">
-                      <div className="flex items-start justify-between">
-                        <div>
-                          <h3 className="font-extrabold text-2xl text-primary mb-2">
-                            $2,095
-                            <span className="text-gray text-sm font-normal">
-                              /month
-                            </span>
-                          </h3>
-                          <h3 className="font-bold text-2xl mb-2">
-                            Palm Harbor
-                          </h3>
-                        </div>
-                        <div className="w-10 h-10 rounded-full flex items-center justify-center border border-[#E8E6F9]">
-                          <i className="ri-heart-3-line text-xl text-primary"></i>
-                        </div>
-                      </div>
-                      <p>2699 Green Valley, Highland Lake, FL</p>
-                      <div className="mt-4 p-3 pb-0 flex items-center justify-between gap-3 border-t border-t-[#F0EFFB]">
-                        <div className="flex items-center gap-3 text-md">
-                          <img src={Beds} alt="" />
-
-                          <span>3 Beds</span>
-                        </div>
-                        <div className="flex items-center gap-3 text-md">
-                          <img src={Bathrooms} alt="" />
-                          <span>2 Bathrooms</span>
-                        </div>
-                        <div className="flex items-center gap-3 text-md">
-                          <img src={Area} alt="" />
-                          <span>5x7 m²</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="card overflow-hidden p-0 rounded-lg border-2 border-[#F0EFFB] bg-white ease-in-out delay-100 hover:-translate-y-1 hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.09)]">
-                    <div className="card-header">
-                      <img
-                        className="w-full object-cover h-64"
-                        src={propertyImage1}
-                        alt=""
-                      />
-                    </div>
-                    <div className="card-body p-5 text-start">
-                      <div className="flex items-start justify-between">
-                        <div>
-                          <h3 className="font-extrabold text-2xl text-primary mb-2">
-                            $2,095
-                            <span className="text-gray text-sm font-normal">
-                              /month
-                            </span>
-                          </h3>
-                          <h3 className="font-bold text-2xl mb-2">
-                            Palm Harbor
-                          </h3>
-                        </div>
-                        <div className="w-10 h-10 rounded-full flex items-center justify-center border border-[#E8E6F9]">
-                          <i className="ri-heart-3-line text-xl text-primary"></i>
-                        </div>
-                      </div>
-                      <p>2699 Green Valley, Highland Lake, FL</p>
-                      <div className="mt-4 p-3 pb-0 flex items-center justify-between gap-3 border-t border-t-[#F0EFFB]">
-                        <div className="flex items-center gap-3 text-md">
-                          <img src={Beds} alt="" />
-
-                          <span>3 Beds</span>
-                        </div>
-                        <div className="flex items-center gap-3 text-md">
-                          <img src={Bathrooms} alt="" />
-                          <span>2 Bathrooms</span>
-                        </div>
-                        <div className="flex items-center gap-3 text-md">
-                          <img src={Area} alt="" />
-                          <span>5x7 m²</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                   <div className="card overflow-hidden p-0 rounded-lg border-2 border-[#F0EFFB] bg-white ease-in-out delay-100 hover:-translate-y-1 hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.09)]">
                     <div className="card-header">
                       <img
